@@ -1,0 +1,137 @@
+/* ==========================================================================
+   תוכן: אודות ומשאבים חינמיים
+   ========================================================================== */
+
+/* ==========================================================================
+   About
+   ========================================================================== */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-text p {
+    margin-bottom: 18px;
+    color: var(--text-gray);
+    font-size: 17.5px;
+}
+
+.highlight-box {
+    background: var(--primary-soft);
+    border-right: 3px solid var(--primary-color);
+    padding: 22px 24px;
+    border-radius: var(--radius-sm);
+    margin: 28px 0;
+}
+
+.highlight-box p {
+    color: #1a3a8f;
+    font-weight: 500;
+    font-size: 18px;
+    margin: 0;
+}
+
+.credentials {
+    margin-top: 28px;
+}
+
+.credentials h3 {
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+.credentials ul {
+    list-style: none;
+}
+
+.credentials li {
+    padding: 9px 0;
+    color: var(--text-gray);
+    font-size: 16.5px;
+}
+
+.about-image {
+    position: relative;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Graph-paper card sitting behind the portrait */
+.about-image::before {
+    content: '';
+    position: absolute;
+    inset: 22px -18px -18px 22px;
+    border-radius: var(--radius);
+    background-color: var(--primary-soft);
+    background-image:
+        linear-gradient(rgba(47, 107, 255, 0.09) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(47, 107, 255, 0.09) 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: -1;
+}
+
+/* ==========================================================================
+   Resources
+   ========================================================================== */
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 26px;
+    margin-top: 46px;
+}
+
+.resource-card {
+    position: relative;
+    background: var(--surface);
+    padding: 32px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    overflow: hidden;
+    transition:
+        transform var(--dur-base) var(--ease-out),
+        box-shadow var(--dur-base) var(--ease-out),
+        border-color var(--dur-base) ease;
+}
+
+.resource-icon {
+    font-size: 44px;
+    margin-bottom: 16px;
+    transition: transform var(--dur-base) var(--ease-out);
+}
+
+.resource-card h3 {
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+.resource-card p {
+    color: var(--text-gray);
+    margin-bottom: 22px;
+    font-size: 16.5px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .resource-card:hover {
+        transform: translateY(-4px);
+        border-color: transparent;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .resource-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .resource-card:hover .resource-icon {
+        transform: translateY(-3px);
+    }
+}

@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>יקיר דריי - מורה פרטי למתמטיקה, פיזיקה ומדעי המחשב בבאר שבע</title>
+  <meta name="description"
+    content="שיעורים פרטיים ומרתונים לבגרויות במתמטיקה 3-5 יחידות, פיזיקה ומדעי המחשב. סטודנט להנדסת תוכנה עם ניסיון מוכח. בבאר שבע ובזום.">
+  <meta name="keywords"
+    content="מורה פרטי באר שבע, שיעורים פרטיים מתמטיקה, מורה לפיזיקה, מדעי המחשב, הכנה לבגרויות, מרתון בגרויות">
+  <meta name="author" content="יקיר דריי">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yakirdray.com/">
+  <meta property="og:title" content="יקיר דריי - מורה פרטי למתמטיקה, פיזיקה ומדעי המחשב">
+  <meta property="og:description"
+    content="שיעורים פרטיים ומרתונים לבגרויות. סטודנט להנדסת תוכנה שנה ד' עם ניסיון מוכח.">
+  <meta property="og:image" content="photo/yakir1.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://yakirdray.com/">
+  <meta property="twitter:title" content="יקיר דריי - מורה פרטי">
+  <meta property="twitter:description" content="שיעורים פרטיים ומרתונים לבגרויות במתמטיקה, פיזיקה ומדעי המחשב">
+  <meta property="twitter:image" content="photo/yakir1.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- Schema.org markup -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "יקיר דריי - מורה פרטי",
+  "image": "photo/yakir1.png",
+  "description": "שיעורים פרטיים ומרתונים לבגרויות במתמטיקה, פיזיקה ומדעי המחשב",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "באר שבע",
+    "addressCountry": "IL"
+  },
+  "telephone": "+972-52-898-5233",
+  "email": "drayyakir@gmail.com",
+  "priceRange": "$$",
+  "areaServed": "באר שבע והסביבה"
+}
+</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <!-- גיליונות הסגנון מפוצלים לפי אזור באתר. הסדר הוא סדר הקסקייד. -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/buttons.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/content.css">
+  <link rel="stylesheet" href="css/faq.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/floating.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/a11y.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/motion.css">
+
+  <!--
+    העדפות נגישות מוחלות לפני הציור הראשון, כדי שמשתמש שבחר ניגודיות גבוהה
+    או טקסט מוגדל לא יראה הבזק של העיצוב הרגיל בכל טעינת עמוד.
+  -->
+  <script>
+    (function () {
+      // בלי JS האקורדיון והחשיפות בגלילה נשארים פתוחים — תוכן לעולם לא נעלם
+      document.documentElement.classList.add('js');
+      try {
+        var raw = localStorage.getItem('yd_a11y_prefs_v1');
+        if (!raw) return;
+        var p = JSON.parse(raw);
+        if (p.version !== 1) return;
+        var c = document.documentElement.classList;
+        c.toggle('a11y-links', !!p.links);
+        c.toggle('a11y-headings', !!p.headings);
+        c.toggle('a11y-readable', !!p.readable);
+        c.toggle('a11y-cursor-big', !!p.bigCursor);
+        c.toggle('a11y-reduce-motion', !!p.reduceMotion);
+        c.toggle('a11y-contrast-high', p.contrast === 'high');
+        c.toggle('a11y-contrast-invert', p.contrast === 'invert');
+        c.toggle('a11y-contrast-mono', p.contrast === 'mono');
+        c.toggle('a11y-text-115', p.textSize === 115);
+        c.toggle('a11y-text-130', p.textSize === 130);
+        c.toggle('a11y-text-150', p.textSize === 150);
+        c.toggle('a11y-lines-16', p.lineHeight === 16);
+        c.toggle('a11y-lines-20', p.lineHeight === 20);
+      } catch (e) { }
+    })();
+  </script>
+
+  <!-- Google Analytics - החלף את G-XXXXXXXXXX במספר שלך -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Facebook Pixel - החלף את XXXXXXXXXX במספר שלך -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'XXXXXXXXXX');
+    fbq('track', 'PageView');
+  </script>
+</head>
+
+<body>
+
+  <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+
+  <header role="banner">
+    <div class="container">
+      <div class="logo">
+        <span class="logo-medallion" aria-hidden="true">
+          <span class="logo-coin">
+            <span class="coin-face coin-front"></span>
+            <span class="coin-face coin-back">∑</span>
+          </span>
+        </span>
+        יקיר דריי
+      </div>
+      <nav class="desktop-nav" aria-label="ניווט ראשי">
+        <ul>
+          <li><a href="#hero">ראשי</a></li>
+          <li><a href="#why">למה אני</a></li>
+          <li><a href="#services">שירותים</a></li>
+          <li><a href="#about">אודות</a></li>
+          <li><a href="#faq">שאלות נפוצות</a></li>
+          <li><a href="#contact">צור קשר</a></li>
+        </ul>
+      </nav>
+      <button class="mobile-menu-btn" type="button" aria-label="פתיחת תפריט" aria-expanded="false"
+        aria-controls="mobile-nav">☰</button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="ניווט ראשי (נייד)">
+    <ul>
+      <li><a href="#hero">ראשי</a></li>
+      <li><a href="#why">למה אני</a></li>
+      <li><a href="#services">שירותים</a></li>
+      <li><a href="#about">אודות</a></li>
+      <li><a href="#faq">שאלות נפוצות</a></li>
+      <li><a href="#contact">צור קשר</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content" role="main" tabindex="-1">
+
+  <div class="hero" id="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        פרונטלי בבאר שבע · בזום לכל הארץ
+      </div>
+      <h1>לא רק "לעבור" את הבגרות<br>להבין אותה <span class="kw">באמת</span></h1>
+      <p>שיעורים פרטיים ומרתונים ב<span class="rotator"
+          data-words="מתמטיקה,פיזיקה,מדעי המחשב">מתמטיקה</span><br>מסטודנט שנה ד' להנדסת תוכנה</p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number" data-count="50" data-suffix="+">50+</div>
+          <div class="stat-label">תלמידים מרוצים</div>
+        </div>
+
+        <div class="stat-item">
+          <div class="stat-number" data-count="4">4</div>
+          <div class="stat-label">שנות ניסיון</div>
+        </div>
+
+        <div class="stat-item">
+          <div class="stat-number" data-count="5" data-suffix=" יח״ל">5 יח״ל</div>
+          <div class="stat-label">מתמטיקה · פיזיקה · מחשבים</div>
+        </div>
+      </div>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-blue">לשיחת ייעוץ חינם</a>
+        <a href="#services" class="btn btn-white">למידע נוסף</a>
+      </div>
+
+    </div>
+
+    <!-- Formula ticker: constant motion, so it runs linear and pauses on hover -->
+    <div class="formula-strip" aria-hidden="true">
+      <div class="formula-track">
+        <span>f(x) = ax² + bx + c</span>
+        <span>E = mc²</span>
+        <span>sin²θ + cos²θ = 1</span>
+        <span>O(n log n)</span>
+        <span>∫ x dx = x²/2</span>
+        <span>F = m·a</span>
+        <span>Σⁿᵢ₌₁ i = n(n+1)/2</span>
+        <span>while (i &lt; n) { i++ }</span>
+        <span>λ = v / f</span>
+        <span>lim x→∞</span>
+        <span>f(x) = ax² + bx + c</span>
+        <span>E = mc²</span>
+        <span>sin²θ + cos²θ = 1</span>
+        <span>O(n log n)</span>
+        <span>∫ x dx = x²/2</span>
+        <span>F = m·a</span>
+        <span>Σⁿᵢ₌₁ i = n(n+1)/2</span>
+        <span>while (i &lt; n) { i++ }</span>
+        <span>λ = v / f</span>
+        <span>lim x→∞</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="why" class="light-bg">
+    <div class="container">
+      <div class="section-intro">
+        <h2>למה לבחור בי כמורה?</h2>
+        <p>אני לא רק מורה רגיל. אני סטודנט להנדסת תוכנה שנה רביעית שמביא גישה חדשה וטרייה לחינוך. אני מלמד איך לחשוב
+          ולפתור בעיות - לא רק לשנן נוסחאות.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">🧠</div>
+          <h3>חשיבה הנדסית</h3>
+          <p>לא שינון מכני. אני מלמד את ההיגיון והחשיבה מאחורי כל נושא. בשיעור מדעי המחשב נבין למה הקוד עובד, לא רק
+            נכתוב אותו.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">🚀</div>
+          <h3>רלוונטי להייטק</h3>
+          <p>אני מביא ידע עדכני מהתעשייה והאקדמיה. מכין אתכם לבגרות, ליחידות מובחרות בצבא ולאוניברסיטה.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">🤝</div>
+          <h3>מנטור בגובה העיניים</h3>
+          <p>אני זוכר מה זה להיות תלמיד תיכון. מדבר בשפה שלכם ויודע להפוך נושאים מאיימים לפשוטים ונגישים.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-intro">
+        <h2>איך אפשר ללמוד איתי?</h2>
+        <p>מגוון אפשרויות מותאמות לכל צורך</p>
+      </div>
+      <div class="grid-3">
+        <div class="service-card">
+          <div class="service-header">
+            <h3>📦 שיעורים פרטיים</h3>
+            <div class="service-badge">הכי פופולרי</div>
+          </div>
+          <div class="service-content">
+            <p>ליווי אישי לחיזוק החומר, סגירת פערים והכנה למבחנים.</p>
+            <ul>
+              <li>מתמטיקה 3-5 יחידות</li>
+              <li>פיזיקה 5 יחידות</li>
+              <li>מדעי המחשב 5 יחידות</li>
+              <li>פרונטלי בבאר שבע או בזום</li>
+            </ul>
+            <div class="service-price">החל מ-₪100 לשעה</div>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-header">
+            <h3>🚀 מרתונים לבגרויות</h3>
+            <div class="service-badge best-value">הכי משתלם</div>
+          </div>
+          <div class="service-content">
+            <p>בוטקאמפ ממוקד בקבוצות קטנות (עד 5 תלמידים) לקראת מבחנים.</p>
+            <ul>
+              <li>10 שעות מרוכזות</li>
+              <li>פתרון בגרויות מלא</li>
+              <li>סיכום חומר וטיפים</li>
+              <li>בזום לכל הארץ</li>
+            </ul>
+            <div class="service-price">₪1,250 למרתון מלא</div>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-header">
+            <h3>🎓 ליווי סטודנטים</h3>
+          </div>
+          <div class="service-content">
+            <p>עזרה לסטודנטים שנה א' בקורסי מבוא בהנדסה ומדעי המחשב.</p>
+            <ul>
+              <li>חדו"א ואלגברה לינארית</li>
+              <li>מבוא למדעי המחשב</li>
+              <li>מבני נתונים ואלגוריתמים</li>
+              <li>שיעורים בזום 1 על 1</li>
+            </ul>
+            <div class="service-price">החל מ-₪120 לשעה</div>
+          </div>
+        </div>
+      </div>
+      <div class="special-offer">
+        <div class="offer-content">
+          <h3>🎁 הצעה מיוחדת למצטרפים חדשים</h3>
+          <p>שיעור ניסיון ראשון ב-50% הנחה - רק ₪50!</p>
+          <a href="#contact" class="btn btn-blue">תפסו את ההזדמנות</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <h2>נעים להכיר, אני יקיר דריי</h2>
+          <p>אני סטודנט בשנה הרביעית ללימודי הנדסת תוכנה במכללת סמי שמעון בבאר־שבע.</p>
+          <p>מאז ומתמיד אהבתי שני דברים: לפתור בעיות מורכבות ולעזור לאנשים. את התשוקה הזו אני מביא לכל שיעור.</p>
+          <p>במשך השנים האחרונות ליוויתי עשרות תלמידים ותלמידות, עזרתי להם לשבור מחסומים פסיכולוגיים מול המקצועות
+            הריאליים, ולצלוח את הבגרויות בציונים גבוהים.</p>
+          <div class="highlight-box">
+            <p><strong>האמונה שלי פשוטה:</strong> כל אחד יכול להצטיין במתמטיקה או במחשבים. לפעמים כל מה שצריך זה מישהו
+              שיסביר את זה קצת אחרת.</p>
+          </div>
+          <div class="credentials">
+            <h3>ההשכלה והניסיון שלי:</h3>
+            <ul>
+              <li>🎓 שנה ד' הנדסת תוכנה - מכללת סמי שמעון</li>
+              <li>📚 4+ שנות ניסיון בהוראה פרטית</li>
+              <li>💻 ניסיון בפיתוח תוכנה בתעשייה</li>
+              <li>🏆 בוגר 5 יחידות במתמטיקה, פיזיקה ומחשבים</li>
+            </ul>
+          </div>
+        </div>
+        <div class="about-image">
+          <img src="photo/yakir1.png" alt="יקיר דריי - מורה פרטי במתמטיקה, פיזיקה ומדעי המחשב" loading="lazy"
+            decoding="async">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Section: FAQ -->
+  <section id="faq" class="light-bg">
+    <div class="container">
+      <div class="section-intro">
+        <h2>שאלות נפוצות</h2>
+        <p>תשובות לשאלות שמרבים לשאול</p>
+      </div>
+      <div class="faq-container">
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>כמה עולה שיעור פרטי?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>שיעור פרטי עולה ₪100 לשעה (60 דקות).</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>איך עובדים השיעורים בזום?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>השיעורים בזום הם אינטראקטיביים לחלוטין! אני משתמש בלוח דיגיטלי, שיתוף מסך, ומסמכים משותפים. אתם יכולים
+              לשאול שאלות בזמן אמת ולפתור תרגילים ביחד. זה כמעט כמו שיעור פרונטלי!</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>מה כולל מרתון לבגרות?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>מרתון לבגרות כולל 10 שעות מרוכזות של לימוד אינטנסיבי בקבוצה קטנה (עד 5 תלמידים). נעבור על כל החומר, נפתור
+              בגרויות שלמות, נתרגל טכניקות פתרון, ונקבל טיפים חשובים למבחן. כולל גם חומרי עזר דיגיטליים.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>מתי מתקיימים המרתונים?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>המרתונים מתקיימים בסופי שבוע לקראת מועדי הבגרויות. בדרך כלל 2-3 שבועות לפני המבחן. אני מפרסם את התאריכים
+              מראש בקבוצת הוואטסאפ ובאתר.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>האם יש שיעור ניסיון?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>כן! השיעור הראשון הוא בהנחה של 50% - רק ₪50. בשיעור הזה נכיר, נבין מה הצרכים שלך, ונתחיל לעבוד על החומר.
+              אין שום התחייבות להמשך.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>למי מתאימים השיעורים?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>השיעורים שלי מתאימים לתלמידי תיכון בכל הרמות (3-5 יחידות), לתלמידים שמתכוננים לבגרויות, ולסטודנטים שנה א'
+              בהנדסה ומדעי המחשב. גם אם אתם מתקשים בחומר או רוצים להשתפר מטוב למצוין - אני כאן בשבילכם!</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>איך מתאמים שיעור?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>פשוט מאוד! צרו קשר דרך הטופס באתר, שלחו וואטסאפ ל-052-898-5233, או התקשרו ישירות. נקבע שיחת היכרות חינם,
+              ואם זה מתאים לשנינו - נתאם את השיעור הראשון.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span>מה המדיניות לביטול שיעורים?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>ניתן לבטל שיעור עד 24 שעות מראש ללא עלות. ביטול בפחות מ-24 שעות יחויב ב-50% ממחיר השיעור. אני מבין שיש
+              מצבים בלתי צפויים - תמיד אפשר לדבר ולמצוא פתרון!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Section: Free Resources -->
+  <section id="resources">
+    <div class="container">
+      <div class="section-intro">
+        <h2>משאבים חינמיים</h2>
+        <p>חומרי עזר שיעזרו לכם להתקדם</p>
+      </div>
+      <div class="resources-grid">
+        <div class="resource-card">
+          <div class="resource-icon" aria-hidden="true">📥</div>
+          <h3>מדריך הכנה לבגרות</h3>
+          <p>מדריך מקיף עם טיפים, טכניקות פתרון, ונוסחאות חשובות</p>
+          <button class="btn btn-outline download-btn" data-resource="guide">הורידו חינם</button>
+        </div>
+        <div class="resource-card">
+          <div class="resource-icon" aria-hidden="true">📊</div>
+          <h3>דף נוסחאות</h3>
+          <p>כל הנוסחאות החשובות במתמטיקה ופיזיקה במקום אחד</p>
+          <button class="btn btn-outline download-btn" data-resource="formulas">הורידו חינם</button>
+        </div>
+        <div class="resource-card">
+          <div class="resource-icon" aria-hidden="true">🎥</div>
+          <h3>סרטוני הסבר</h3>
+          <p>צפו בערוץ היוטיוב שלי בסרטונים קצרים על נושאים מורכבים</p>
+          <a href="https://youtube.com/@yakirdray" target="_blank" class="btn btn-outline">לערוץ היוטיוב</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-intro">
+        <h2>בואו נתחיל את המסע להצלחה</h2>
+        <p>השאירו פרטים ואחזור אליכם תוך 24 שעות לשיחת ייעוץ חינם</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>בואו נדבר</h3>
+          <p>אשמח להכיר אתכם, להבין מה המטרות שלכם, ולראות איך אוכל לעזור. השיחה הראשונה תמיד ללא עלות וללא התחייבות.
+          </p>
+          <div class="contact-item">
+            <span class="contact-icon" aria-hidden="true">📱</span>
+            <div>
+              <strong>טלפון / וואטסאפ</strong>
+              <a href="tel:0528985233">052-898-5233</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon" aria-hidden="true">✉️</span>
+            <div>
+              <strong>אימייל</strong>
+              <a href="mailto:drayyakir@gmail.com">drayyakir@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon" aria-hidden="true">📍</span>
+            <div>
+              <strong>מיקום</strong>
+              <span>באר שבע והסביבה / זום לכל הארץ</span>
+            </div>
+          </div>
+          <div class="social-links">
+            <h4>עקבו אחרי ברשתות:</h4>
+            <div class="social-icons">
+              <a href="https://wa.me/972528985233" target="_blank" aria-label="WhatsApp">
+                <svg width="24" height="24" fill="currentColor">
+                  <use href="#whatsapp-icon" />
+                </svg>
+              </a>
+              <a href="https://facebook.com/yakirdray" target="_blank" aria-label="Facebook">
+                <svg width="24" height="24" fill="currentColor">
+                  <use href="#facebook-icon" />
+                </svg>
+              </a>
+              <a href="https://instagram.com/yakirdray" target="_blank" aria-label="Instagram">
+                <svg width="24" height="24" fill="currentColor">
+                  <use href="#instagram-icon" />
+                </svg>
+              </a>
+              <a href="https://tiktok.com/@yakirdray" target="_blank" aria-label="TikTok">
+                <svg width="24" height="24" fill="currentColor">
+                  <use href="#tiktok-icon" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form id="contactForm" novalidate>
+            <fieldset>
+              <legend class="visually-hidden">טופס יצירת קשר</legend>
+              <p class="form-note" id="required-note">שדות המסומנים בכוכבית (*) הם שדות חובה</p>
+
+              <div class="form-group">
+                <label for="name">שם מלא *</label>
+                <input type="text" id="name" name="name" required aria-required="true" autocomplete="name"
+                  aria-describedby="name-error">
+                <span id="name-error" class="field-error" role="alert" hidden>נא למלא שם מלא</span>
+              </div>
+              <div class="form-group">
+                <label for="phone">טלפון *</label>
+                <input type="tel" id="phone" name="phone" required aria-required="true" dir="ltr" inputmode="numeric"
+                  autocomplete="tel" aria-describedby="phone-hint phone-error">
+                <span id="phone-hint" class="field-hint">10 ספרות, לדוגמה 0501234567</span>
+                <span id="phone-error" class="field-error" role="alert" hidden>נא להזין מספר טלפון תקין בן 10
+                  ספרות</span>
+              </div>
+              <div class="form-group">
+                <label for="email">אימייל</label>
+                <input type="email" id="email" name="email" dir="ltr" autocomplete="email"
+                  aria-describedby="email-error">
+                <span id="email-error" class="field-error" role="alert" hidden>נא להזין כתובת אימייל תקינה</span>
+              </div>
+              <div class="form-group">
+                <label for="service">באיזה מקצוע צריכים עזרה?</label>
+                <select id="service" name="service">
+                  <option value="">-- בחר/י מקצוע --</option>
+                  <option value="math">מתמטיקה</option>
+                  <option value="physics">פיזיקה</option>
+                  <option value="cs">מדעי המחשב</option>
+                  <option value="student">ליווי סטודנטים</option>
+                  <option value="other">אחר</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">פרטים נוספים (לא חובה)</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+              </div>
+              <button type="submit" class="submit-btn">
+                <span class="btn-text">שלח הודעה בוואטסאפ</span>
+                <span class="btn-icon" aria-hidden="true">📱</span>
+              </button>
+            </fieldset>
+          </form>
+
+          <!-- Live regions: כל הודעת מצב של הטופס מוכרזת לקורא מסך -->
+          <div id="formSuccess" class="form-message success" role="status" aria-live="polite" style="display:none;">
+            ✅ תודה! ההודעה נשלחה בהצלחה. אחזור אליך בהקדם!
+          </div>
+          <div id="formError" class="form-message error" role="alert" style="display:none;">
+            ❌ אופס! משהו השתבש. נסה שוב או צור קשר ישירות בטלפון.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Section: Call to Action -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>מוכנים להתחיל?</h2>
+        <p>הצטרפו לעשרות תלמידים שכבר משפרים את הציונים שלהם</p>
+        <a href="#contact" class="btn btn-white btn-large">קבעו שיחת ייעוץ חינם</a>
+        <p class="cta-guarantee">🔒 ללא התחייבות • אפשר לבטל בכל עת</p>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-col">
+          <h3>יקיר דריי</h3>
+          <p>מורה פרטי למתמטיקה, פיזיקה ומדעי המחשב</p>
+          <p>מלמד בגישה חדשנית, משלב תיאוריה עם פרקטיקה</p>
+        </div>
+        <div class="footer-col">
+          <h4>קישורים מהירים</h4>
+          <ul>
+            <li><a href="#why">למה אני</a></li>
+            <li><a href="#services">שירותים</a></li>
+            <li><a href="#faq">שאלות נפוצות</a></li>
+            <li><a href="#contact">צור קשר</a></li>
+            <li><a href="accessibility.html">הצהרת נגישות</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>שירותים</h4>
+          <ul>
+            <li>מתמטיקה 3-5 יחידות</li>
+            <li>פיזיקה 5 יחידות</li>
+            <li>מדעי המחשב 5 יחידות</li>
+            <li>מרתונים לבגרויות</li>
+            <li>ליווי סטודנטים</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>צור קשר</h4>
+          <ul class="contact-list">
+            <li>📱 <a href="tel:0528985233">052-898-5233</a></li>
+            <li>✉️ <a href="mailto:drayyakir@gmail.com">drayyakir@gmail.com</a></li>
+            <li>📍 באר שבע והסביבה</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 כל הזכויות שמורות ליקיר דריי</p>
+        <div class="footer-legal">
+          <a href="accessibility.html">הצהרת נגישות</a>
+          <a href="#privacy">מדיניות פרטיות</a>
+          <a href="#terms">תנאי שימוש</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top" type="button" aria-label="חזרה למעלה">
+    <span aria-hidden="true">↑</span>
+  </button>
+
+  <!--
+    ווידג'ט העדפות נגישות (תקנה 35).
+    כלי נוחות למשתמש בלבד: הוא מחליף מחלקות CSS על <html> ולא נוגע בתוכן,
+    לא מייצר טקסט חלופי ולא כותב ARIA. הנגשת האתר עצמו בנויה בקוד.
+  -->
+  <button id="a11y-trigger" class="a11y-trigger" type="button" aria-label="פתיחת תפריט נגישות"
+    aria-expanded="false" aria-controls="a11y-panel" aria-keyshortcuts="Alt+A">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+      <path
+        d="M12 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm9 5.5-6 1.2V22h-2v-6h-2v6H9V8.7L3 7.5 3.4 5.6 12 7.3l8.6-1.7L21 7.5z" />
+    </svg>
+  </button>
+
+  <div id="a11y-panel" class="a11y-panel" role="dialog" aria-modal="false" aria-labelledby="a11y-panel-title" hidden>
+    <div class="a11y-panel-head">
+      <h2 id="a11y-panel-title">הגדרות נגישות</h2>
+      <button id="a11y-close" class="a11y-close" type="button" aria-label="סגירת תפריט נגישות">
+        <span aria-hidden="true">✕</span>
+      </button>
+    </div>
+
+    <div class="a11y-grid">
+      <button class="a11y-toggle" type="button" data-a11y="links" aria-pressed="false">
+        <span class="a11y-toggle-icon" aria-hidden="true">🔗</span>
+        <span class="a11y-toggle-label">הדגשת קישורים</span>
+      </button>
+      <button class="a11y-toggle" type="button" data-a11y="headings" aria-pressed="false">
+        <span class="a11y-toggle-icon" aria-hidden="true">🅷</span>
+        <span class="a11y-toggle-label">הדגשת כותרות</span>
+      </button>
+      <button class="a11y-toggle" type="button" data-a11y="readable" aria-pressed="false">
+        <span class="a11y-toggle-icon" aria-hidden="true">🔤</span>
+        <span class="a11y-toggle-label">גופן קריא</span>
+      </button>
+      <button class="a11y-toggle" type="button" data-a11y="contrast">
+        <span class="a11y-toggle-icon" aria-hidden="true">◐</span>
+        <span class="a11y-toggle-label">ניגודיות</span>
+        <span class="a11y-toggle-value" data-value-for="contrast">רגילה</span>
+      </button>
+      <button class="a11y-toggle" type="button" data-a11y="textSize">
+        <span class="a11y-toggle-icon" aria-hidden="true">A</span>
+        <span class="a11y-toggle-label">גודל טקסט</span>
+        <span class="a11y-toggle-value" data-value-for="textSize">100%</span>
+      </button>
+      <button class="a11y-toggle" type="button" data-a11y="lineHeight">
+        <span class="a11y-toggle-icon" aria-hidden="true">☰</span>
+        <span class="a11y-toggle-label">ריווח שורות</span>
+        <span class="a11y-toggle-value" data-value-for="lineHeight">רגיל</span>
+      </button>
+      <button class="a11y-toggle" type="button" data-a11y="bigCursor" aria-pressed="false">
+        <span class="a11y-toggle-icon" aria-hidden="true">⬈</span>
+        <span class="a11y-toggle-label">סמן גדול</span>
+      </button>
+      <button class="a11y-toggle" type="button" data-a11y="reduceMotion" aria-pressed="false">
+        <span class="a11y-toggle-icon" aria-hidden="true">⏸</span>
+        <span class="a11y-toggle-label">עצירת אנימציות</span>
+      </button>
+      <button class="a11y-toggle a11y-reset" type="button" data-a11y="reset">
+        <span class="a11y-toggle-icon" aria-hidden="true">↺</span>
+        <span class="a11y-toggle-label">איפוס הגדרות</span>
+      </button>
+    </div>
+
+    <p class="a11y-panel-note">
+      ההגדרות נשמרות בדפדפן שלך בלבד.
+      <a href="accessibility.html">להצהרת הנגישות המלאה</a>
+    </p>
+  </div>
+
+  <!-- מחוץ לפאנל בכוונה: הכרזות חייבות לשרוד את סגירתו -->
+  <div id="a11y-live" class="visually-hidden" role="status" aria-live="polite"></div>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/972528985233" class="whatsapp-float" target="_blank" aria-label="שלח הודעה בוואטסאפ">
+    <svg width="32" height="32" fill="white" viewBox="0 0 24 24">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  </a>
+
+  <!-- SVG Icons -->
+  <svg style="display:none">
+    <symbol id="whatsapp-icon" viewBox="0 0 24 24">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </symbol>
+    <symbol id="facebook-icon" viewBox="0 0 24 24">
+      <path
+        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+    </symbol>
+    <symbol id="instagram-icon" viewBox="0 0 24 24">
+      <path
+        d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z" />
+    </symbol>
+    <symbol id="tiktok-icon" viewBox="0 0 24 24">
+      <path
+        d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+    </symbol>
+  </svg>
+
+  <!-- core ראשון: הוא מגדיר את YD שכל השאר משתמשים בו -->
+  <script src="js/core.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/faq.js"></script>
+  <script src="js/reveal.js"></script>
+  <script src="js/contact-form.js"></script>
+  <script src="js/misc.js"></script>
+  <script src="js/a11y-widget.js"></script>
+</body>
+
+</html>

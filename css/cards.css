@@ -1,0 +1,225 @@
+/* ==========================================================================
+   כרטיסים: יתרונות, שירותים והצעה מיוחדת
+   ========================================================================== */
+
+/* ==========================================================================
+   Cards
+   ========================================================================== */
+
+.card {
+    position: relative;
+    background: var(--surface);
+    padding: 32px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm), var(--highlight-top);
+    overflow: hidden;
+    transition:
+        transform var(--dur-base) var(--ease-out),
+        box-shadow var(--dur-base) var(--ease-out),
+        border-color var(--dur-base) ease;
+}
+
+/* Accent rule that draws in from the right on hover */
+.card::before,
+.resource-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 3px;
+    background: var(--gradient-brand);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--dur-base) var(--ease-out);
+}
+
+.card-icon {
+    display: grid;
+    place-items: center;
+    width: 54px;
+    height: 54px;
+    margin-bottom: 20px;
+    border-radius: 14px;
+    background: var(--primary-soft);
+    font-size: 27px;
+    transition: transform var(--dur-base) var(--ease-out);
+}
+
+.card h3 {
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: var(--text-gray);
+    font-size: 16.5px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .card:hover {
+        transform: translateY(-4px);
+        border-color: transparent;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .card:hover .card-icon {
+        transform: scale(1.06) rotate(-3deg);
+    }
+}
+
+/* --- Service cards --- */
+.service-card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    transition:
+        transform var(--dur-base) var(--ease-out),
+        box-shadow var(--dur-base) var(--ease-out),
+        border-color var(--dur-base) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .service-card:hover {
+        transform: translateY(-4px);
+        border-color: transparent;
+        box-shadow: var(--shadow-lg);
+    }
+}
+
+.service-header {
+    position: relative;
+    /* מדרגה בהירה מההירו, כך שהכרטיס לא נראה כמו חתיכה שנחתכה ממנו */
+    background: linear-gradient(160deg, var(--ink-600), var(--ink-800));
+    color: #fff;
+    padding: 26px 26px 24px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.service-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(232, 238, 252, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232, 238, 252, 0.06) 1px, transparent 1px);
+    background-size: 22px 22px;
+}
+
+.service-header h3 {
+    position: relative;
+    color: #fff;
+    margin: 0;
+    font-size: 20px;
+}
+
+.service-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(232, 238, 252, 0.14);
+    border: 1px solid rgba(232, 238, 252, 0.18);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.service-badge.best-value {
+    background: var(--warning-color);
+    border-color: transparent;
+    color: #3a2a05;
+}
+
+.service-content {
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.service-content p {
+    margin-bottom: 18px;
+    color: var(--text-gray);
+    font-size: 16.5px;
+}
+
+.service-content ul {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.service-content li {
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-gray);
+    font-size: 16px;
+}
+
+.service-content li:last-child {
+    border: none;
+}
+
+.service-content li::before {
+    content: "✓";
+    display: inline-grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    border-radius: 6px;
+    background: rgba(22, 163, 74, 0.12);
+    color: var(--success-color);
+    font-size: 12px;
+    font-weight: 700;
+    vertical-align: -4px;
+}
+
+.service-price {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-dark);
+    padding: 14px;
+    background: var(--bg-light);
+    border: 1px dashed var(--border-color);
+    border-radius: var(--radius-sm);
+    margin-top: auto;
+}
+
+/* --- Special offer --- */
+.special-offer {
+    position: relative;
+    margin-top: 46px;
+    background: linear-gradient(135deg, #fff6e2 0%, #ffe9bd 100%);
+    border: 1px solid #f3d79a;
+    border-radius: var(--radius);
+    padding: 40px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.offer-content h3 {
+    color: #4a3410;
+    font-size: 26px;
+    margin-bottom: 12px;
+}
+
+.offer-content p {
+    font-size: 19px;
+    color: #6b5220;
+    margin-bottom: 24px;
+}

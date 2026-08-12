@@ -1,0 +1,477 @@
+/* ==========================================================================
+   פריסה: הדר וניווט, מבנה הסקשנים, אזור ה-CTA והפוטר
+   ========================================================================== */
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+/*
+ * ההדר לא משנה גובה בגלילה. קודם הוא הנפיש padding — כלומר layout —
+ * וזה גם ריצד את --header-h וגם הזיז את התפריט הנייד תוך כדי.
+ * עכשיו הגובה קבוע, ומה שמשתנה הוא רק צבע, צל וקנה מידה של הלוגו: הכול על ה-GPU.
+ */
+header {
+    /*
+     * גובה הבר נקבע כאן, ובלי padding אנכי — כך התמונה שבלוגו יכולה
+     * למלא אותו מקצה לקצה במקום לרחף בתוך ריפוד.
+     */
+    --bar-h: 74px;
+    background: rgba(255, 255, 255, 0.78);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    backdrop-filter: saturate(180%) blur(14px);
+    padding: 0;
+    border-bottom: 1px solid transparent;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition:
+        background-color var(--dur-base) ease,
+        border-color var(--dur-base) ease,
+        box-shadow var(--dur-base) var(--ease-out);
+}
+
+header.scrolled {
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom-color: var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: var(--bar-h);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-dark);
+    text-decoration: none;
+    cursor: pointer;
+    /* transform-origin ימני: הלוגו יושב בקצה הימני ב-RTL וכיווץ מהמרכז מזיז אותו */
+    transform-origin: right center;
+    transition: transform var(--dur-base) var(--ease-out);
+}
+
+/* ==========================================================================
+   המדליה שבלוגו — מטבע דו-צדדי שמסתובב סביב ציר X עם הגלילה
+   ========================================================================== */
+
+.logo-medallion {
+    width: 40px;
+    height: 40px;
+    flex: none;
+    /* פרספקטיבה קצרה יחסית לגודל: בלעדיה הסיבוב נראה שטוח */
+    perspective: 300px;
+}
+
+.logo-coin {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.coin-face {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    box-shadow:
+        0 0 0 2px var(--surface),
+        0 0 0 3.5px var(--primary-color),
+        0 6px 14px -6px rgba(19, 29, 53, 0.5);
+}
+
+/* הפנים: הפרצוף של יקיר */
+.coin-front {
+    background-image: url('../photo/yakir-avatar.png');
+    background-size: cover;
+    background-position: center 30%;
+}
+
+/* הגב: סימן הסכום, כמו על צדו השני של מטבע */
+.coin-back {
+    background: linear-gradient(140deg, var(--primary-color), var(--accent-color));
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+    transform: rotateX(180deg);
+}
+
+/*
+ * הסיבוב עצמו: שתי סיבובים על פני כל גלילת העמוד — איטי מספיק
+ * כדי להיקרא כמטבע שמתהפך ולא כאנימציית טעינה.
+ * בדפדפנים שתומכים ב-scroll timeline זה רץ מחוץ ל-main thread לגמרי.
+ */
+@keyframes coinSpin {
+    to { transform: rotateX(360deg); }
+}
+
+@supports (animation-timeline: scroll()) {
+    .logo-coin {
+        /*
+         * לונגהנדים ולא קיצור: הקיצור animation מאפס את animation-duration
+         * ל-0s, ואז אנימציית גלילה פשוט לא מתקדמת. duration: auto הוא מה
+         * שממפה את האנימציה לכל טווח הגלילה של העמוד.
+         */
+        animation-name: coinSpin;
+        animation-duration: auto;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-iteration-count: 2;
+        animation-timeline: scroll(root block);
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .logo:hover {
+        transform: scale(1.02);
+    }
+
+    header.scrolled .logo:hover {
+        transform: scale(0.97);
+    }
+}
+
+.logo:active,
+header.scrolled .logo:active {
+    transform: scale(0.92);
+}
+
+.desktop-nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px 28px;
+}
+
+.desktop-nav a {
+    text-decoration: none;
+    color: var(--text-gray);
+    font-weight: 500;
+    font-size: 16px;
+    position: relative;
+    transition: color var(--dur-fast) ease;
+}
+
+.desktop-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--gradient-brand);
+    /* scaleX, not width: transform only, no layout work */
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--dur-fast) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .desktop-nav a:hover {
+        color: var(--text-dark);
+    }
+
+    .desktop-nav a:hover::after {
+        transform: scaleX(1);
+    }
+}
+
+.desktop-nav a:focus-visible::after {
+    transform: scaleX(1);
+}
+
+/* --- Mobile menu --- */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 26px;
+    color: var(--text-dark);
+    cursor: pointer;
+    padding: 5px;
+    transition: transform var(--dur-press) var(--ease-out);
+}
+
+.mobile-menu-btn:active {
+    transform: scale(0.92);
+}
+
+.mobile-nav {
+    display: none;
+    position: fixed;
+    /* Sits exactly on the header's bottom edge, in both its tall and
+       scrolled-compact states */
+    top: var(--header-h, 74px);
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    z-index: 99;
+    /* Enters from the edge it is anchored to — never from scale(0) */
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+    transform-origin: top center;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        opacity var(--dur-fast) var(--ease-out),
+        transform var(--dur-fast) var(--ease-out),
+        visibility 0s linear var(--dur-fast);
+}
+
+.mobile-nav.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    visibility: visible;
+    pointer-events: auto;
+    transition:
+        opacity var(--dur-base) var(--ease-out),
+        transform var(--dur-base) var(--ease-out),
+        visibility 0s;
+}
+
+/* Keyboard-initiated close (Esc) skips the animation entirely */
+.mobile-nav[data-instant] {
+    transition-duration: 0ms;
+    transition-delay: 0s;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 16px;
+}
+
+.mobile-nav li {
+    margin-bottom: 6px;
+}
+
+.mobile-nav a {
+    display: block;
+    padding: 12px 14px;
+    color: var(--text-gray);
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    transition:
+        background-color var(--dur-fast) ease,
+        color var(--dur-fast) ease,
+        transform var(--dur-press) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .mobile-nav a:hover {
+        background: var(--bg-light);
+        color: var(--primary-color);
+    }
+}
+
+.mobile-nav a:active {
+    transform: scale(0.98);
+    background: var(--bg-light);
+}
+
+/* ==========================================================================
+   Sections
+   ========================================================================== */
+
+section {
+    padding: 86px 0;
+}
+
+.light-bg {
+    background: var(--bg-light);
+}
+
+.section-intro {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 46px;
+}
+
+.section-intro h2 {
+    position: relative;
+    display: inline-block;
+}
+
+/* Same chalk stroke as the hero, drawn when the heading scrolls in */
+.section-intro h2::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: -6px;
+    height: 6px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, rgba(34, 211, 238, 0.25), var(--primary-color));
+    clip-path: inset(0 0 0 100%);
+    transition: clip-path 620ms var(--ease-out) 120ms;
+}
+
+.section-intro.is-visible h2::after {
+    clip-path: inset(0 0 0 0);
+}
+
+.section-intro p {
+    font-size: 18px;
+    color: var(--text-gray);
+    margin-top: 18px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+    margin-top: 46px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+/* ==========================================================================
+   CTA + footer
+   ========================================================================== */
+
+.cta-section {
+    position: relative;
+    background: var(--ink);
+    color: #fff;
+    padding: 84px 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(232, 238, 252, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232, 238, 252, 0.05) 1px, transparent 1px);
+    background-size: 28px 28px;
+    -webkit-mask-image: radial-gradient(90% 120% at 50% 50%, #000 20%, transparent 75%);
+    mask-image: radial-gradient(90% 120% at 50% 50%, #000 20%, transparent 75%);
+}
+
+.cta-content {
+    position: relative;
+}
+
+.cta-content h2 {
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.cta-content p {
+    font-size: 19px;
+    margin-bottom: 28px;
+    color: rgba(232, 238, 252, 0.75);
+}
+
+.cta-section .btn-white {
+    background: #fff;
+    color: var(--ink);
+    border-color: transparent;
+}
+
+.cta-guarantee {
+    margin-top: 18px;
+    font-size: 14px;
+    color: rgba(232, 238, 252, 0.6);
+}
+
+footer {
+    background: var(--ink-900);
+    color: #fff;
+    padding: 56px 0 28px;
+}
+
+.footer-main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 40px;
+    margin-bottom: 36px;
+}
+
+.footer-col h3,
+.footer-col h4 {
+    color: #fff;
+    margin-bottom: 14px;
+}
+
+.footer-col p {
+    color: #94a2ba;
+    line-height: 1.8;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col li {
+    margin-bottom: 9px;
+    color: #94a2ba;
+    font-size: 16px;
+}
+
+.footer-col a {
+    color: #94a2ba;
+    text-decoration: none;
+    transition: color var(--dur-fast) ease;
+}
+
+.footer-col a:hover {
+    color: #fff;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 26px;
+    border-top: 1px solid rgba(232, 238, 252, 0.1);
+    color: #6f7f99;
+    font-size: 14.5px;
+}
+
+.footer-legal {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-legal a {
+    color: #6f7f99;
+    text-decoration: none;
+}
+
+.footer-legal a:hover {
+    color: #fff;
+}

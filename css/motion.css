@@ -1,0 +1,152 @@
+/* ==========================================================================
+   תנועה: חשיפה בגלילה, כיבוד prefers-reduced-motion והדפסה
+   ========================================================================== */
+
+/* ==========================================================================
+   חשיפה בגלילה
+   מצב הפתיחה מוגדר כאן ולא ב-JS: כשה-JS הוסיף את המחלקה אחרי הציור הראשון,
+   הכרטיסים הבזיקו גלויים ואז דהו החוצה וחזרו. מחלקת js מגיעה מה-<head>,
+   כך שבלי JS שום דבר לא מוסתר מלכתחילה.
+   הרשימה כאן חייבת להישאר זהה ל-REVEAL_SELECTOR שב-js/reveal.js.
+   ========================================================================== */
+
+.js :is(.section-intro, .card, .service-card, .resource-card) {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+        opacity 360ms var(--ease-out),
+        transform 360ms var(--ease-out);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+.js :is(.section-intro, .card, .service-card, .resource-card).is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* פס הנוסחאות עוצר כשהוא מחוץ למסך — אין טעם להזיז שכבה שאיש לא רואה */
+.formula-strip:not(.is-onscreen) .formula-track {
+    animation-play-state: paused;
+}
+
+/* ==========================================================================
+   Reduced motion — fewer and gentler animations, not zero.
+   Opacity and colour stay (they aid comprehension); movement goes.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-badge,
+    .hero h1,
+    .hero p,
+    .hero-stats,
+    .hero-buttons,
+    .urgency-banner,
+    .form-message {
+        animation: fadeIn 200ms ease backwards;
+    }
+
+    .hero h1 .kw::after,
+    .section-intro h2::after {
+        animation: none;
+        transition: none;
+        clip-path: inset(0 0 0 0);
+    }
+
+    .formula-track {
+        animation: none;
+        transform: none;
+    }
+
+    /* המדליה נשארת, רק מפסיקה להסתובב */
+    .logo-coin {
+        animation: none !important;
+        transform: none !important;
+    }
+
+    .rotator[data-swapping] {
+        transform: none;
+        filter: none;
+    }
+
+    .js :is(.section-intro, .card, .service-card, .resource-card) {
+        transform: none;
+        transition: opacity 200ms ease;
+        transition-delay: 0ms;
+    }
+
+    /* הפאנל עדיין נפתח, רק בלי לזוז אליך */
+    .a11y-panel,
+    .a11y-panel.is-open {
+        transform: none;
+    }
+
+    .card:hover,
+    .card:hover .card-icon,
+    .service-card:hover,
+    .resource-card:hover,
+    .resource-card:hover .resource-icon,
+    .contact-item:hover,
+    .btn-blue:hover,
+    .btn-white:hover,
+    .submit-btn:hover,
+    .social-icons a:hover,
+    .whatsapp-float:hover,
+    .back-to-top.visible:hover,
+    .logo:hover {
+        transform: none;
+    }
+
+    .loading {
+        animation-duration: 1.2s;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+}
+
+/* ==========================================================================
+   Print
+   ========================================================================== */
+
+@media print {
+    header,
+    .hero-buttons,
+    .formula-strip,
+    .back-to-top,
+    .whatsapp-float,
+    .a11y-trigger,
+    .a11y-panel,
+    footer {
+        display: none;
+    }
+
+    .js :is(.section-intro, .card, .service-card, .resource-card) {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    /* אקורדיון פתוח בהדפסה — נייר לא נפתח בלחיצה */
+    .js .faq-answer {
+        grid-template-rows: 1fr;
+    }
+
+    .js .faq-answer > * {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* העדפות התצוגה לא עוברות איתו לנייר */
+    html[class*="a11y-"] body {
+        filter: none !important;
+    }
+
+    html[class*="a11y-text-"] {
+        zoom: 1 !important;
+    }
+
+    html[class*="a11y-lines-"] :is(body, p, li, label) {
+        line-height: normal !important;
+    }
+}

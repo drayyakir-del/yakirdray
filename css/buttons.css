@@ -1,0 +1,77 @@
+/* ==========================================================================
+   כפתורים
+   ========================================================================== */
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 28px;
+    font-family: inherit;
+    font-size: 16.5px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition:
+        transform var(--dur-press) var(--ease-out),
+        background-color var(--dur-fast) ease,
+        border-color var(--dur-fast) ease,
+        color var(--dur-fast) ease,
+        box-shadow var(--dur-fast) ease;
+}
+
+/* Every pressable element confirms the press */
+.btn:active {
+    transform: translateY(0) scale(0.97);
+}
+
+.btn-blue {
+    background: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 10px 24px -14px var(--primary-color);
+}
+
+.btn-white {
+    background: #fff;
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-outline {
+    background: transparent;
+    /* primary על לבן יוצא 4.50:1 בדיוק — הכהה נותן 6.8:1 ומרווח בטוח */
+    color: var(--primary-dark);
+    border: 1.5px solid var(--primary-color);
+}
+
+.btn-large {
+    padding: 16px 36px;
+    font-size: 18px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .btn-blue:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 16px 30px -16px var(--primary-dark);
+    }
+
+    .btn-white:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .btn-outline:hover {
+        background: var(--primary-color);
+        color: #fff;
+    }
+}

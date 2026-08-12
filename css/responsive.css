@@ -1,0 +1,118 @@
+/* ==========================================================================
+   התאמה למסכים קטנים
+   ========================================================================== */
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 968px) {
+    .grid-3,
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 34px;
+    }
+
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding-top: 80px;
+    }
+
+    section {
+        padding: 64px 0;
+    }
+
+    .hero-stats {
+        flex-wrap: wrap;
+        gap: 34px;
+    }
+
+    .about-image::before {
+        inset: 16px -10px -10px 16px;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 14px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    .desktop-nav {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .mobile-nav {
+        display: block;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .hero-stats {
+        gap: 26px;
+    }
+
+    .rotator {
+        min-width: 0;
+    }
+
+    .special-offer,
+    .contact-form,
+    .card,
+    .resource-card {
+        padding: 24px;
+    }
+
+    .back-to-top {
+        bottom: 86px;
+        left: 24px;
+        width: 42px;
+        height: 42px;
+    }
+
+    .a11y-trigger {
+        bottom: 20px;
+        left: 20px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .a11y-panel {
+        bottom: 80px;
+        left: 16px;
+        right: 16px;
+        width: auto;
+    }
+
+    .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 54px;
+        height: 54px;
+    }
+}

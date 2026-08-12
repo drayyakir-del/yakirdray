@@ -1,0 +1,97 @@
+/* ==========================================================================
+   כפתורים צפים: חזרה למעלה, וואטסאפ וספינר
+   ========================================================================== */
+
+/* ==========================================================================
+   Floating controls
+   ========================================================================== */
+
+.back-to-top {
+    position: fixed;
+    /* מעל כפתור הנגישות, שמחזיק את הפינה */
+    bottom: 98px;
+    left: 34px;
+    width: 46px;
+    height: 46px;
+    background: var(--ink);
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 90;
+    box-shadow: var(--shadow-ink);
+    /* Scales in from 0.9 — nothing appears out of nothing */
+    opacity: 0;
+    transform: scale(0.9);
+    visibility: hidden;
+    transition:
+        opacity var(--dur-fast) var(--ease-out),
+        transform var(--dur-fast) var(--ease-out),
+        background-color var(--dur-fast) ease,
+        visibility 0s linear var(--dur-fast);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .back-to-top.visible:hover {
+        background: var(--primary-color);
+        transform: translateY(-3px);
+    }
+}
+
+.back-to-top.visible:active {
+    transform: scale(0.94);
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 58px;
+    height: 58px;
+    background: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 16px 34px -14px rgba(37, 211, 102, 0.7);
+    z-index: 90;
+    /* No idle bounce: a permanent loop is noise, not information */
+    transition:
+        transform var(--dur-press) var(--ease-out),
+        box-shadow var(--dur-fast) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .whatsapp-float:hover {
+        transform: scale(1.06);
+        box-shadow: 0 20px 40px -12px rgba(37, 211, 102, 0.75);
+    }
+}
+
+.whatsapp-float:active {
+    transform: scale(0.95);
+}
+
+/* Loading spinner */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, .3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    /* linear for constant motion; a faster spin reads as a faster app */
+    animation: spin 700ms linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

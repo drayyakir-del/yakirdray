@@ -1,0 +1,268 @@
+/* ==========================================================================
+   נגישות: ווידג'ט ההעדפות (תקנה 35) ומחלקות ההעדפה על <html>
+   ========================================================================== */
+
+/* ==========================================================================
+   ווידג'ט הגדרות נגישות (תקנה 35)
+   ========================================================================== */
+
+.a11y-trigger {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 54px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 120;
+    box-shadow: 0 14px 30px -12px rgba(47, 107, 255, 0.8);
+    transition:
+        transform var(--dur-press) var(--ease-out),
+        background-color var(--dur-fast) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .a11y-trigger:hover {
+        background: var(--primary-dark);
+        transform: scale(1.05);
+    }
+}
+
+.a11y-trigger:active {
+    transform: scale(0.95);
+}
+
+.a11y-panel {
+    position: fixed;
+    bottom: 96px;
+    left: 30px;
+    width: min(360px, calc(100vw - 40px));
+    max-height: min(560px, calc(100vh - 140px));
+    overflow-y: auto;
+    padding: 18px;
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    z-index: 121;
+    /* נפתח מהכפתור שממנו הוא נובע, ואף פעם לא מ-scale(0) */
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+    transform-origin: bottom left;
+    transition:
+        opacity var(--dur-fast) var(--ease-out),
+        transform var(--dur-fast) var(--ease-out);
+}
+
+.a11y-panel.is-open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.a11y-panel[hidden] {
+    display: none;
+}
+
+.a11y-panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.a11y-panel-head h2 {
+    font-size: 19px;
+    margin: 0;
+}
+
+.a11y-close {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    background: var(--bg-light);
+    border: none;
+    border-radius: 9px;
+    font-size: 15px;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: background-color var(--dur-fast) ease, transform var(--dur-press) var(--ease-out);
+}
+
+.a11y-close:active {
+    transform: scale(0.92);
+}
+
+.a11y-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.a11y-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 6px;
+    background: var(--bg-light);
+    border: 1.5px solid transparent;
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--text-dark);
+    text-align: center;
+    cursor: pointer;
+    transition:
+        background-color var(--dur-fast) ease,
+        border-color var(--dur-fast) ease,
+        transform var(--dur-press) var(--ease-out);
+}
+
+.a11y-toggle:active {
+    transform: scale(0.96);
+}
+
+.a11y-toggle.is-active {
+    background: var(--primary-soft);
+    border-color: var(--primary-color);
+    color: var(--primary-dark);
+}
+
+.a11y-toggle-icon {
+    font-size: 18px;
+    line-height: 1;
+}
+
+.a11y-toggle-value {
+    font-size: 11.5px;
+    color: var(--text-gray);
+}
+
+.a11y-toggle.is-active .a11y-toggle-value {
+    color: var(--primary-dark);
+}
+
+.a11y-reset {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.a11y-panel-note {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-gray);
+}
+
+/* ==========================================================================
+   העדפות נגישות — כל שינוי הוא מחלקה על <html>, בלי נגיעה בתוכן
+   ========================================================================== */
+
+/* הדגשת קישורים */
+html.a11y-links a:not(.btn):not(.logo) {
+    text-decoration: underline !important;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 2px;
+    font-weight: 600;
+}
+
+/* הדגשת כותרות */
+html.a11y-headings :is(h1, h2, h3, h4) {
+    outline: 2px dashed currentColor;
+    outline-offset: 5px;
+}
+
+/* גופן קריא — גופני מערכת בלבד, בלי הורדת webfont שתשנה רוחב טקסט */
+html.a11y-readable :is(body, button, input, select, textarea, .mono, .stat-number, .service-price) {
+    font-family: Arial, "Segoe UI", "Noto Sans Hebrew", sans-serif !important;
+    letter-spacing: normal !important;
+}
+
+/* סמן גדול */
+html.a11y-cursor-big,
+html.a11y-cursor-big * {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24"><path d="M5 2l14 9-6.2 1.6L16.2 20l-3 1.2-3.3-7.6L5 18z" fill="black" stroke="white" stroke-width="1.3"/></svg>') 4 4, auto !important;
+}
+
+/* גודל טקסט */
+html.a11y-text-115 { zoom: 1.15; }
+html.a11y-text-130 { zoom: 1.3; }
+html.a11y-text-150 { zoom: 1.5; }
+
+/* ריווח שורות */
+html.a11y-lines-16 :is(body, p, li, label, dd, dt, .faq-answer > *) {
+    line-height: 1.6 !important;
+}
+
+html.a11y-lines-20 :is(body, p, li, label, dd, dt, .faq-answer > *) {
+    line-height: 2 !important;
+}
+
+/* ניגודיות גבוהה — מכהה טקסט משני על בהיר, ומבהיר אותו על כהה */
+html.a11y-contrast-high {
+    --text-gray: #2a3450;
+    --text-soft: #2a3450;
+}
+
+html.a11y-contrast-high :is(.hero p, .stat-label, .cta-content p, .cta-guarantee, .footer-col p, .footer-col li, .footer-col a, .footer-bottom, .footer-legal a, .hero-badge) {
+    color: #fff !important;
+}
+
+html.a11y-contrast-high .formula-track span {
+    color: rgba(255, 255, 255, 0.92) !important;
+}
+
+html.a11y-contrast-high :is(.card, .service-card, .resource-card, .contact-item, .faq-item, .contact-form) {
+    border-color: var(--text-dark) !important;
+}
+
+/* ניגודיות הפוכה וגווני אפור */
+html.a11y-contrast-invert body {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+html.a11y-contrast-mono body {
+    filter: grayscale(1);
+}
+
+/* תמונות לא הופכות פעמיים */
+html.a11y-contrast-invert :is(img, video, .about-image img) {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/*
+ * הווידג'ט עצמו חייב להישאר קריא, אחרת המשתמש לא יוכל לכבות את מה שהדליק.
+ */
+html.a11y-contrast-invert :is(#a11y-panel, #a11y-trigger) {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* עצירת אנימציות */
+html.a11y-reduce-motion *,
+html.a11y-reduce-motion *::before,
+html.a11y-reduce-motion *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+}
+
+/*
+ * אנימציה מונעת-גלילה לא מושפעת מ-animation-duration, כי המשך שלה הוא
+ * טווח הגלילה עצמו. את המדליה צריך לעצור בשמה.
+ */
+html.a11y-reduce-motion .logo-coin {
+    animation-name: none !important;
+    transform: none !important;
+}

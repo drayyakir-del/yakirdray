@@ -1,0 +1,84 @@
+/* ==========================================================================
+   עמודי תוכן משפטי (הצהרת נגישות)
+   ========================================================================== */
+
+/* ==========================================================================
+   עמוד תוכן משפטי (הצהרת נגישות)
+   ========================================================================== */
+
+.legal-page {
+    padding: 56px 0 80px;
+}
+
+.legal-doc {
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.legal-doc h1 {
+    font-size: clamp(30px, 4.4vw, 44px);
+    margin-bottom: 22px;
+}
+
+.legal-doc h2 {
+    font-size: clamp(21px, 2.6vw, 26px);
+    margin: 36px 0 12px;
+}
+
+.legal-lead {
+    font-size: 18px;
+    color: var(--text-gray);
+    padding: 20px 22px;
+    background: var(--primary-soft);
+    border-inline-start: 3px solid var(--primary-color);
+    border-radius: var(--radius-sm);
+}
+
+.legal-doc p {
+    color: var(--text-gray);
+    margin-bottom: 14px;
+}
+
+.legal-doc ul {
+    margin: 0 0 18px;
+    padding-inline-start: 22px;
+    color: var(--text-gray);
+}
+
+.legal-doc li {
+    margin-bottom: 9px;
+}
+
+.legal-doc :is(.legal-contact, .legal-dates) {
+    list-style: none;
+    padding: 18px 20px;
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+}
+
+.legal-doc :is(.legal-contact, .legal-dates) li:last-child {
+    margin-bottom: 0;
+}
+
+.legal-doc strong {
+    color: var(--text-dark);
+}
+
+.legal-doc a:not(.btn) {
+    color: var(--primary-dark);
+}
+
+.legal-doc kbd {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.9em;
+    padding: 2px 7px;
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-bottom-width: 2px;
+    border-radius: 6px;
+}
+
+.legal-back {
+    margin-top: 34px;
+}
